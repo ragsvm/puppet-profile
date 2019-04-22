@@ -8,4 +8,8 @@ class profile::base(
     class {'::ntp':
       servers => $ntp_servers
     }
+    if $facts['os']['family'] == 'Redhat'{
+      include ::profile::selinux
+    }
+
   }
